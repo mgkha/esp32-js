@@ -1,0 +1,23 @@
+{
+  "name": "esp32",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "info": "esptool --port COM3 flash_id",
+    "erase": "esptool --port COM3 erase_flash",
+    "flash": "esptool --chip esp32 --port COM3 --baud 921600 write_flash --flash_mode=dio --flash_freq=80m --flash_size=detect 0x1000 espruino_2v09_esp32/bootloader.bin 0x10000 espruino_2v09_esp32/espruino_esp32.bin 0x8000 espruino_2v09_esp32/partitions_espruino.bin",
+    "reset": "npm run erase && npm run flash",
+    "upload": "espruino --no-ble --port COM3 -b 115200 --board espruino_2v09_esp32/board_esp32.json index.js",
+    "dev": "espruino --no-ble --port COM3 -b 115200 --board espruino_2v09_esp32/board_esp32.json --ide 8080",
+    "sm": "./node_modules/.bin/serialport-terminal -p COM3 -b 115200 --no-echo"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@serialport/repl": "^9.0.8",
+    "@serialport/terminal": "^9.0.8",
+    "cross-env": "^7.0.3",
+    "espruino": "^0.1.38"
+  }
+}
