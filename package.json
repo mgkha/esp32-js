@@ -17,7 +17,6 @@
   "dependencies": {
     "@serialport/repl": "^9.0.8",
     "@serialport/terminal": "^9.0.8",
-    "cross-env": "^7.0.3",
     "espruino": "^0.1.38"
   }
 }
